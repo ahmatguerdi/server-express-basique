@@ -1,3 +1,6 @@
+// On importe le module express 
+// et les différentes 
+// méthodes qui sont dans le (../controllers/products.js)
 const express = require("express");
 const router = express.Router();
 
@@ -22,4 +25,7 @@ router.patch("/:id", updateProduct);
 
 router.delete("/:id", deleteProduct);
 
+// On rend disponible les routes de chacune des méthodes dans le projet 
+// càd
+// On les exportent
 module.exports = router;

@@ -1,7 +1,7 @@
+//  on importe les différents modules et routes
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-// const products = require("./data.js");
 const products_routes = require("./routes/products.js");
 
 require("dotenv").config();
@@ -11,5 +11,8 @@ mongoose
   .then((result) => app.listen(5000))
   .catch((err) => console.log(Error));
 
+  // middleware
 app.use(express.json());
+
+// La route principale
 app.use("/api/products", products_routes);

@@ -1,12 +1,14 @@
-// const products = require("../data.js");
+//On importe le model ou schéma qui est dans ../models/Product.js
 const Product = require("../models/Product.js");
 
+// La fonction  qui récupère toute la liste des produits
 const getProducts = (req, res) => {
   Product.find({})
     .then((result) => res.status(200).json({ msg: "Toute la liste de la base de données produit", result }))
     .catch((error) => res.status(500).json({ msg: error }));
 };
 
+// La  fonction qui récupère un seul produit de la liste grâce à son ID
 const getProduct = (req, res) => {
   Product.findOne({ _id: req.params.id })
     .then((result) => res.status(200).json({ msg: "Voici le produit recherché", result }))
@@ -15,6 +17,7 @@ const getProduct = (req, res) => {
     );
 };
 
+// La fonction qui récupère toute la liste des produits
 const createProduct = (req, res) => {
   Product.create(req.body)
     .then((result) =>
@@ -25,6 +28,7 @@ const createProduct = (req, res) => {
     );
 };
 
+// La fonction qui permet de mettre à jour le status d'un produit grâce à son ID aussi
 const updateProductStutus = (req, res) => {
   Product.findOneAndUpdate(
     { _id: req.params.id }, { stockStatus: req.params.stockStatus },
@@ -41,6 +45,8 @@ const updateProductStutus = (req, res) => {
     );
 };
 
+// La fonction qui permet de mettre à jour le productName et price d'un produit
+//grâce à son ID aussi
 const updateProduct = (req, res) => {
   const {productName, price} = req.body;
   Product.findOneAndUpdate({ _id: req.params.id }, {productName, price}, {
@@ -55,6 +61,7 @@ const updateProduct = (req, res) => {
     );
 };
 
+// La fonction de suppression qui supprime un produit par son ID
 const deleteProduct = (req, res) => {
   Product.findOneAndDelete({ _id: req.params.id })
     .then((result) =>
@@ -68,6 +75,7 @@ const deleteProduct = (req, res) => {
     );
 };
 
+// L'exportation des différentes fonctions
 module.exports = {
   getProducts,
   getProduct,

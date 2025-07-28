@@ -1,5 +1,7 @@
+// Importation de la bibliothèque mongoose
 const mongoose = require("mongoose");
 
+// La création de schéma du produit
 const ProductSchema = new mongoose.Schema(
   {
     productName: {
@@ -22,6 +24,8 @@ const ProductSchema = new mongoose.Schema(
   }
 );
 
+// On envoie le schéma dans la base de données
 const Product = mongoose.model("Product", ProductSchema);
 
+// On exporte le model afin de le rendre disponible dans tout le projet où l'import est.
 module.exports = Product;
