@@ -6,6 +6,7 @@ const products_routes = require("./routes/products.js");
 
 require("dotenv").config();
 
+// La connexion à la base de données
 mongoose
   .connect(process.env.MONGODB_URI)
   .then((result) => app.listen(5000))
